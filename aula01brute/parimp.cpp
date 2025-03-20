@@ -3,9 +3,12 @@ using namespace std;
 
 int main(){
     int a;
+    cout << "Digite um valor" << endl;
+    cin >> a;
+
     if(a%2 == 0){
-        cout << "O valor eh par" << endl;
+        cout << "eh par" << endl;
     }else{
-        cout << "O valor eh impar" << endl;
+        cout << "eh impar" << endl;
     }
 }
