@@ -6,19 +6,22 @@ int main(){
     int n;
     int a;
     int soma;
-    int i;
+    int i = 0;
+    int c = 0;
 
     cin >> n;
     soma = 0;
     
-    for(i=1; i<=n; i++){
+    while(i < n ){
         cin >> a;
+        i++;
         soma += a;
-        if(soma == 1000000){
-            cout << i;
-        }
+       c++;
+       if(soma >= 1000000){
+        break;
+       }
     }
-   
+    cout << c;
       
    
 }
