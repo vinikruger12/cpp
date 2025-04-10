@@ -1,33 +1,18 @@
 #include <bits/stdc++.h>
-#include <unordered_set>
 
 using namespace std;
 
 int main(){
-    int n;
-    cin >> n;
-    vector<int> vec(n);
+    string a;
+    cin >> a;
+    char b;
 
-    for(int i = 0; i < n; i++){
-        cin >> vec[i];
+    cin >> b;
+    int c = 0;
+    for(int i = 0;i < a.size(); i++){
+        if(b == a[i]){
+            c++;
+        }
     }
-
-    int m;
-    cin >> m;
-    unordered_set<int> sairam;
-
-    for(int i = 0; i < m; i++){
-        int x;
-        cin >> x;
-        sairam.insert(x);
-    }
-
-    for(int i = 0; i < n; i++){
-       if(sairam.find(vec[i]) == sairam.end()){
-        cout << vec[i] << endl;
-       }
-    }
-
+    cout << c;
 }
-
-   
