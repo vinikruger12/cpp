@@ -15,6 +15,8 @@ int main() {
        }
         
         else if(c-i >= 0){
+            p += n - c;
+        }
     }
     
     cout << p << endl;
