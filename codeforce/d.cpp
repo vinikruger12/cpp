@@ -1,36 +1,45 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+#define int long long
 
-int main(){
-    int n, q;
+signed main(){
+    int n,q;
     cin >> n >> q;
 
-    vector<int> vec(n);
+    vector<int>vec(n);
 
-    for(int i = 0;i < n;i++){
+    for(int i = 0; i < n; i++){
         cin >> vec[i];
     }
 
     sort(vec.begin(), vec.end());
-   
-    vector<int> soma(n+1, 0);
-    
-    for(int i = 0; i < n;i++){
-        soma[i+1] = soma[i] + vec[i];
+    reverse(vec.begin(), vec.end());
+
+    vector<long long> pref(n);
+    pref[0] = vec[0];
+
+    for(int i = 1; i < n;i++){
+    pref[i] = pref[i-1] + vec[i];        
     }
 
-
- 
-   
-    int x, y;
-    int preco;
-
-    for(int i = 0; i < q;i++){
+    while(q--){
+        int x, y;
         cin >> x >> y;
-        preco = soma[n] - soma[n -y];
-        
+
+        long long resp = 0;
+
+        int l = x-y;
+        int r = x-1;
+
+        if (l == 0) {
+            resp = pref[r];
+        } else {
+            resp = pref[r] - pref[l - 1];
+        }
+
+        cout << resp << endl;
+
     }
-        cout << preco << endl;;
-    }
-    
+
+}
