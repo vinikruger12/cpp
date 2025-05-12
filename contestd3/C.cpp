@@ -10,22 +10,27 @@ int main(){
         for(int i = 0; i < n;i++){
             cin >> vec[i];
         }
-        int soma = 1;
-        int j = 1;
-        for(int i = 0; i < n;i++){
-            for(int j = 1;j < n;j++){
-                if(vec[i] != vec[j]){
-                    soma++;
-                }else{
-                    break;
-                }
-            }
+        
+        map<int,int> mapa;
+        for(auto a:vec){
+            mapa[a]++;
         }
 
-
-    
-        cout << soma << endl;
-        cout << n - soma << endl;
+        int soma = 0;
+        for(auto u:mapa){
+            if(u.second > 1){
+                soma++;
+            }
+        }
+        
+        if(soma == 0){
+            cout << '0' << endl;
+        }else if(soma == 1){
+        cout << '1' << endl;
+        }else{
+            cout << n - soma << endl;
+        }
+        
 }   
 
 }
