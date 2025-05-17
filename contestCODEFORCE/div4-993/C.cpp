@@ -8,34 +8,19 @@ int main(){
         int m, a , b ,c;
         cin >> m >> a >> b >> c;
 
-        int r1 = m;
-        int r2 = m;
-        
-        if(a <= r1){
-            r1 -= a;
-        }else{
-            r1 -= a - r1;
-        }
+        int sentados = 0;
 
-        if(b <= r2){
-            r2 -= b;
-        }else{
-            r2 -= b - r2;
-        }
+        int l1 = min(a, m);
+        int l2 = min(b, m);
 
-        int caso = 0;
+        sentados = l1 + l2;
 
+        int d1 = m - l1;
+        int d2 = m - l2;
 
+        int resto = min(c, d1+d2);
+        sentados += resto;
 
-     if(r1+r2 == 0){
-            cout << m*2 << endl;
-        }
-       else if(r2 != m && r1 != m){
-          caso = (m*2) - (r1+r2);
-          caso += c;
-
-        cout << caso << endl;
-
-        }
+        cout << sentados << endl;
     }
 }
