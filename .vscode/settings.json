@@ -21,6 +21,7 @@
         "xhash": "cpp",
         "xtree": "cpp",
         "chrono": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "iosfwd": "cpp"
     }
 }
