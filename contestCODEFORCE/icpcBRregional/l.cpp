@@ -6,11 +6,17 @@ int main(){
     string s;cin >> s;
     int t; cin >> t;
 
-    int i = s.size() - t;
-    string nova = s.substr(i+t);
-    s = s.substr(i);
+    
+    string nova;
+    string total;
  
-    string total = nova + s;
+        for(int i = (s.size()-1);i >= (s.size()-t);i--){
+            nova += s[i];
+        }
+
+        s = s.erase(s.size() - t);
+
+        total = nova + s;
         
     
 
