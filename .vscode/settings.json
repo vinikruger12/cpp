@@ -22,6 +22,7 @@
         "xtree": "cpp",
         "chrono": "cpp",
         "map": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "ostream": "cpp"
     }
 }
