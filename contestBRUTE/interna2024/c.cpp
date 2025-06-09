@@ -30,15 +30,12 @@ int main(){
 
     while(n--){
         cin >> a >> b;
-     
+
         if(!recursao(s, a, b, 1)){
             ver = false;
         }
         
     }
-
-    
-
 
     if(ver){
         cout << "SIM" << endl;

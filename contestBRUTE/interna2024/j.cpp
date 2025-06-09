@@ -3,16 +3,27 @@
 using namespace std;
 
 int main(){
-    int n, k; cin >> n >> k;
-    string s; cin >> s;
+    int n,k; cin >> n >> k;
+    string s;cin >> s;
+    int x = 0;
+    char aux;
 
-    for(int i = 1;i <= k;i++){
-            swap(s[i],s[i+1]);
-            
-            swap(s[i-1], s[i]);
+   while(k--){
+    for(int i = x;i < n;i++){
+        if(s[i] == '.'){
+            aux = s[x];
+            s[x] = s[i];
+            s[i] = s[x+1];
+            s[x+1] = aux;
+            x++;
+            break;
+        }
+    }
 
 
+   }
 
-            cout << s << endl;
+   cout << s << endl;
+
 }
-}
+
