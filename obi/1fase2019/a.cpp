@@ -3,38 +3,48 @@ using namespace std;
 
 int main(){
     int n; cin >> n;
-
     vector<int> vec(n);
-    map<int, int> mapa;
 
-    for(int i = 0; i < n;i++){
+    for(int i = 0;i < n;i++){
         cin >> vec[i];
-        mapa[vec[i]]++;
     }
 
-    vector<int> outro;
-    for(int u:vec){
-        if(mapa[u] > 1){
-            outro.emplace_back(u);
+
+
+    int v1 = 0, v2 = 0;
+    int conta = 1;
+  
+    int maior = 1;
+
+    for(int i = 0;i < n;i++){
+    
+        v1 = vec[i];
+        
+
+        for(int k = i+1;k < n;k++){   
+            v2 = vec[k];
+            bool achou = false;
+            if(v1 == v2) continue;
+            conta = 2;
+
+            for(int j = (k+1);j < n;j++){
+                if(vec[j] == v1 && achou == false){
+                    conta++;
+                    achou = true;
+
+                }else if(vec[j] == v2 && achou == true){
+                    conta++;
+                    achou = false;
+                }
+               maior = max(maior, conta);
+            }
+        maior = max(maior, conta);
+        conta = 0;
+
+           
         }
     }
 
-  int conta = 0;
-
-
-    for(int i = 1;i < outro.size();i++){
-       if(outro[i] != outro[i-1]){
-            conta++;
-        }   
-   }
-
-
-    if(n == 1){
-        cout << "1" << endl;
-    }else{
-    cout << conta << endl;
- }
-  
- return 0;
+    cout << maior << endl;
 
 }

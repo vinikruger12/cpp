@@ -33,6 +33,7 @@
         "span": "cpp",
         "unordered_map": "cpp",
         "ranges": "cpp",
-        "stacktrace": "cpp"
+        "stacktrace": "cpp",
+        "limits": "cpp"
     }
 }
