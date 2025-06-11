@@ -1,67 +1,62 @@
 #include <bits/stdc++.h>
+using namespace std;
+const int maxn = 1e5 + 5;
+using ll = long long;
+vector<int> adj[maxn], color(maxn);
+vector<bool> vis(maxn);
 
-//GRAFOS//
+bool dfs(int u){
+    vis[u] = 1;
+    for(auto v:adj[u]){
+        if(vis[v] && color[v] == !color[u])continue;
+        else if(vis[v] && color[v] == color[u]) return false;
+        else{
+            color[v] = !color[u];
+            if(!dfs(v)){
+                return false;
+            };
+        }
+    }
+    return true;
+}
 
 using namespace std;
-
-int main(){
+signed main(){
+    ios_base::sync_with_stdio(0);cin.tie(0);
+    
     int n, m; cin >> n >> m;
-    vector<pair<int, int>> pares(m);
-    vector<pair<int,int>> inverso(m);
-    set<int> bolsa1;
-    set<int> bolsa2;
-    for(int i = 0;i < n;i++){
-        cin >> pares[i].first >> pares[i].second;
-        inverso[i].first = pares[i].second;
-        inverso[i].second = pares[i].first;
 
+    while(m--){
+        int u, v; cin >> u >> v;
+        --u;--v;
+        adj[u].emplace_back(v);
+        adj[v].emplace_back(u);
 
-
-
-    for(int j = 0;j < 5;j++){
-        if(bolsa2[j] == pares.first[i]){
-            bolsa2.insert(pares.first[i]);
-            bolsa1.insert(pares.second[i]);
-        }
-        else{   bolsa1.insert(pares.first[i]);
-                bolsa2.insert(pares.second[i]);
-    }
-}
     }
 
-    bool ver = true;
-
-    for(int i = 1;i < bolsa1.size();i++){
-        for(int j = 1;j < m;j++){
-        if(bolsa1[i-1] == pares[j-1].first && bolsa1[i] == pares.[j].second){
-            ver = false;
+    bool flag = 1;
+    for(int i =0;i < n;i++){
+        if(!vis[i]){
+            flag = flag && dfs(i);
         }
     }
-    }
 
-
-    for(int i = 1;i < bolsa2.size();i++){
-        for(int j = 1;j < m;j++){
-        if(bolsa2[i-1] == pares[j-1].first && bolsa2[i] == pares.[j].second){
-            ver = false;
-        }
-    }
-    }
-
-
-    if(ver){
+    if(!flag){
+        cout << "IMPOSSIVEL" << endl;
+    }else{
         cout << "POSSIVEL" << endl;
-        cout << bolsa1.size() << " " << bolsa2.size();
-        for(int i = 0;i < bolsa1.size();i++){
-            cout << bolsa1[i] << " ";
+        vector<vector<int>> a(2);
+        for(int i = 0; i < n;i++){
+            a[color[i]].emplace_back(i);
+        }
+        cout << a[0].size() << ' ' << a[1].size() << endl;
+        for(auto u: a[0]){
+            cout << u+1 << ' ';
         }
         cout << endl;
-        for(int i = 0;i < bolsa2.size();i++){
-            cout << bolsa2[i] << " ";
+        for(auto u : a[1]){
+            cout << u+1 << ' ';
         }
-    }else{
-        cout << "IMPOSSIVEL" << endl;
+        cout << endl;
     }
-
-    cout << endl;
 }
