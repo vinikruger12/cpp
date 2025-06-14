@@ -8,66 +8,31 @@ int main(){
 
     map<int,int> queijo;
     map<int,int> faca;
-
-    for(int i = 0;i < p;i++){
-        int posicao; char c; int a;
-        cin >> posicao >> c >> a;
-
-        if(c == 'f'){
-        faca[posicao] = a;
-        }else{
-        queijo[posicao] = a;
-        
-    }
-}
-
-
-    for(int i = 0;i < p;i++){
-        bool verfaca = true;
-        bool verqueijo = true;
-        int posicao; char c; int a;
-        cin >> posicao >> c >> a;
-
-        if(c == 'f'){
-            for(auto z:faca){
-                if(faca[z.first] == a){
-                    verfaca = false;
-                }
-            }
-            if(verfaca){
-            faca[posicao] = a;
-            }else{
-            faca[posicao] = x+i;
-            }
-     
-        }else if(c == 'q'){
-
-            for(auto z:queijo){
-                if(queijo[z.first] == a){
-                    verqueijo = false;
-                }
-            }
-                if(verqueijo){
-                queijo[posicao] = a;
-            }else{
-                queijo[posicao] = x+i;
-            }        
-    }
-}
-
-
-
     int conta = 0;
 
-    for(auto z:queijo){
+    for(int i = 0;i < x;i++){
 
-        if(queijo[z.first] == faca[z.first]){
-            conta++;
-        }
+        int pessoa; char c; int utensilio;
+        cin >> pessoa >> c >> utensilio;
+        // Como so olho se defini, não me importo com mudar a indexação
+        
+        if(c == 'f' && !faca.count(utensilio))  // Só defino se precisar
+            faca[utensilio] = pessoa;
+
+        else if(c == 'q' && !queijo.count(utensilio))
+            queijo[utensilio] = pessoa;
 
     }
-    
-    cout << conta << endl;
+    vector<bool> pareados(p);
+    for(auto [numero, pessoa] : queijo){ // Isso decompoe a dupla
+        
+        // Pode ser que ninguem tenha pego a faca com esse numero, então verifico antes
+        if( faca.count(numero) && pessoa == faca[numero]){ 
+            if(!pareados[pessoa]) conta++; // Essa pessoa ainda não tem seu par
+            pareados[pessoa] = true;
+
+        }
+    }
+
+    cout << conta << endl;
 }
-
-
