@@ -38,6 +38,7 @@
         "filesystem": "cpp",
         "format": "cpp",
         "complex": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "iomanip": "cpp"
     }
 }
