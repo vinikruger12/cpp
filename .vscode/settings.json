@@ -37,6 +37,7 @@
         "limits": "cpp",
         "filesystem": "cpp",
         "format": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "cstdlib": "cpp"
     }
 }
