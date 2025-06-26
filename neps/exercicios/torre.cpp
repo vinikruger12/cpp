@@ -3,19 +3,44 @@ using namespace std;
 
 int main() {
     int n; cin >> n;
-    vector<vector<int>> a(n, vector<int>(n));
-    vector<int> r(n), c(n);
-    for(int i = 0; i < n; i++)
-        for(int j = 0; j < n; j++) {
-            cin >> a[i][j];
-            r[i] += a[i][j];
-            c[j] += a[i][j];
+    vector<vector<int>> mat(n, vector<int>(n));
+
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            cin >> mat[i][j];
+        }
+    }
+
+
+    int a = 0, b = 0;
+    int maior = 0;
+    int res = 0;
+
+    while(b != n){
+
+        if(a == n){
+            a = 0;
+            b++;
         }
 
-    int ans = 0;
-    for(int i = 0; i < n; i++)
-        for(int j = 0; j < n; j++)
-            ans = max(ans, r[i] + c[j] - a[i][j]);
+        for(int i = 0;i < n;i++){
+            if(a != i){
+            res += mat[i][b];
+            }
+        }
 
-    cout << ans << '\n';
+        for(int j = 0;j < n;j++){
+            if(b != j){
+                res += mat[a][j];
+            }
+        }
+
+        maior = max(maior, res);
+        res = 0;
+        a++;
+
+    }   
+
+    cout << maior << endl;
+
 }
