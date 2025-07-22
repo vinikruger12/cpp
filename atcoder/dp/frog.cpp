@@ -3,22 +3,20 @@
 using namespace std;
 
 const int maxn = 1e5+5;
-int dp[maxn], h[maxn];
-
+int dp[maxn],h[maxn];
 
 int main(){
-    int n,k; cin >> n >> k;
+    int n; cin >> n;
     for(int i = 0;i < n;i++) cin >> h[i];
     for(int i = 0;i < n;i++) dp[i] = 1e9;
 
     dp[0] = 0;
 
     for(int i = 0;i < n;i++){
-        for(int j = 1;j <= k;j++){
-            if(i + j < n) dp[i +j] = min(dp[i + j], dp[i] + abs(h[i+j] - h[i]));
-        }
+        if(i+2 < n) dp[i+2] = min(dp[i+2], dp[i] + abs(h[i+2] - h[i]));
+        dp[i+1] = min(dp[i+1], dp[i] + abs(h[i+1] - h[i]));
     }
 
-    cout << dp[n-1] << endl;
 
+        cout << dp[n-1] << endl;
 }
