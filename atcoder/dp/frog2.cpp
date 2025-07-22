@@ -17,13 +17,11 @@ int main(){
         
         for(int j = 1;j <= k;j++){
             dp[j] = min(dp[j],dp[i] + abs(h[j] - h[i]));
+            dp[i] = min(dp[i],dp[j] + abs(h[j] - h[i]));
         }
 
     }
-
-    for(int i = 0;i< n;i++){
-        cout << dp[i] << ' ';
-    }
-
+    
+    cout << dp[n-1] << endl;
 
 }
