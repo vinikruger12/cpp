@@ -2,7 +2,7 @@
 
 using namespace std;
 const int maxn = 2e5 + 5;
-vector<int> adj[maxn];
+vector<int> adj[maxn],tam(maxn);
 
 vector<bool> vis(maxn, false);
 
@@ -10,9 +10,11 @@ int dfs(int u){
     vis[u] = 1;
     for(auto v:adj[u]){
         if(!vis[i]){
-          dfs(i);
+          tam[u] += dfs(v) + 1;
         }
     }
+
+    return tam[u];
 }
 
 int main(){
