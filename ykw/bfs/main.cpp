@@ -1,63 +1,61 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
 const int maxn = 1e5+5;
 vector<int> adj[maxn];
-vector<bool> vis((maxn), 0);
-vector<int> stc;
-vector<int> ans;
-bool f = 0;
-
-void dfs(int u, int p = -1){
-    if(f) return;
-    stc.emplace_back(u);
-    vis[u] = 1;
-    if(f) return;
-    
-    for(auto v:adj[u]){
-        if(f) return;
-        if(!vis[v]) dfs(v, u);
-        else{
-            if(v != p){
-                f = 1;
-                ans.emplace_back(v);
-                while(v != stc.back()){
-                    ans.emplace_back(stc.back());
-                    stc.pop_back();
-                }
-                ans.emplace_back(v);
-                if(f) return;
-            }
-        }
-    }
-    if(f) return;
-    stc.pop_back();
-}
 
 int main(){
-    int n, m ; cin >> n >> m;
+    int n, m; cin >> n >> m;
+
     for(int i = 0;i < m;i++){
         int u, v; cin >> u >> v;
         adj[u].emplace_back(v);
         adj[v].emplace_back(u);
     }
 
-    for(int i = 1;i <= n;i++){
-        if(!vis[i]){
-            dfs(i);
+    vector<int> pai((maxn), -1), dist((maxn), maxn);
+    pai[1] = 0;
+    dist[1] = 0;
+
+    queue<int> q;
+    q.emplace(1);
+
+    while(!q.empty()){
+        int u = q.front();
+        q.pop();
+
+        for(auto v:adj[u]){
+            if(dist[u] + 1 < dist[v]){
+            dist[v] = dist[u] + 1;            
+             pai[v] = u;
+            q.emplace(v);
+            }
         }
     }
 
-
-
-    if(ans.size() == 0){
+     if(pai[n] == -1){
+        
         cout << "IMPOSSIBLE" << endl;
-    }else{
-    cout << ans.size() << endl;
-    for(int i = 0;i < ans.size();i++){
-        cout << ans[i] << ' ';
+        return 0;
+}
+
+    vector<int> res;
+    
+    int u = n;
+
+    while(u != 1){
+        res.emplace_back(u);
+        u = pai[u];
+    }
+
+    res.emplace_back(1);
+    reverse(res.begin(), res.end());
+
+   
+    cout << res.size() << endl;
+    for(int i = 0;i < res.size();i++){
+        cout << res[i] << ' ';
     }
     cout << endl;
-}
+
 }
