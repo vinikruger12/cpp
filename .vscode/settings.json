@@ -61,6 +61,7 @@
         "stop_token": "cpp",
         "syncstream": "cpp",
         "thread": "cpp",
-        "functional": "cpp"
+        "functional": "cpp",
+        "charconv": "cpp"
     }
 }
