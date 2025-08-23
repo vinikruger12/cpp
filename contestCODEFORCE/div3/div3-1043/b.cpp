@@ -1,31 +1,25 @@
 #include <bits/stdc++.h>
+#define ll long long
 using namespace std;
-using ll = long long;
 
-int main() {
-    int t;
-    cin >> t;
-    while(t--) {
-        ll n;
-        cin >> n;
-        set<ll> s;
+int main(){
+    int t; cin >> t;
+    
+    while(t--){
+        ll n; cin >> n;
+        vector<ll> res;
+        ll d = 11;
 
-        ll pot10 = 10;
-        while(pot10 <= n) {
-            ll d = pot10 + 1;
-            if(n % d == 0) {
-                s.insert(n / d);
+        while(n >= d){
+            if(n % d == 0)
+                res.emplace_back(n / d);
+             d = (d-1) * 10 + 1;
+        }
+
+            cout << res.size() << endl;
+            for(int i = res.size() - 1;i >= 0;i--){
+                cout << res[i] << ' ';
             }
-            if(pot10 > LLONG_MAX / 10) break;
-            pot10 *= 10;
-        }
-
-        if(s.empty()) {
-            cout << 0 << "\n";
-        } else {
-            cout << s.size() << "\n";
-            for(auto x : s) cout << x << " ";
-            cout << "\n";
-        }
+            cout << endl;
     }
 }
