@@ -1,30 +1,22 @@
 #include <bits/stdc++.h>
+
 using namespace std;
+
 int main(){
     int t; cin >> t;
     while(t--){
-        string um; cin >> um;
-        string dois; cin >> dois;
+        string f; cin >> f;
+        string s; cin >> s;
 
-        bool ver = true;
-        for(int i = 0; i < um.size();i++){
-            if(um[i] == 'L'){
-                if(dois[i] != um[i]){
-                    ver = false;
-                }
-            }
-            if(um[i] == 'R'){
-                if(dois[i] != um[i] && dois[i+1] != um[i]){
-                    ver = false;
+        for(int i = 0;i < f.size();i++){
+            if(f[i] == 'R'){
+                int conta1 = 0;
+                int conta2 = 0;
+                for(int j = i;j < s.size();j++){
+                    if(f[j] == 'R') conta1++;
+                    if(s[j] == 'R') conta2++;
                 }
             }
         }
-
-        if(ver){
-            cout << "YES" << endl;
-        }else{
-            cout << "NO" << endl;
-        }
-
     }
 }
