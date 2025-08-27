@@ -20,9 +20,6 @@ int dfs(int u){
     
 }
 
-
-
-
 int main(){
     int s, t, p; cin >> s >> t >> p;
     vector<int> a(s);

@@ -1,34 +1,27 @@
 #include <bits/stdc++.h>
-#define ll long long
+#define int long long
 using namespace std;
+int n, w, h;
 
-ll w, h, n;
-
-bool f(ll mid){
-    ll largura = 0;
-    ll altura = 0;
-    ll soma = 0;
-        largura += (mid/w);
-        altura += (mid/h);
-        soma += largura*altura;
-        if(soma >= (n)) return true;
-    return soma >= (n);
+bool f(int mid){
+    __int128 alt = mid/h;
+    __int128 lar = mid/w;
+    return alt * lar >= n;
 }
 
-int bb(ll l = 0, ll r = 1000000000000000000LL){
-    ll res = 0;
-    while(l <= r){
-        ll mid = (l+r)/2;
-        if(f(mid)){
-            res = mid;
-            r = mid - 1;
-        }
-        else l = mid + 1;
-    }
-    return res;
-}
-
-int main(){
+signed main(){
     cin >> w >> h >> n;
-    cout << bb()<< endl;
+    int l = 0, r = 1;
+    while(!f(r)) r *= 2;
+
+    while(r - l > 1){
+        int mid = l + (r-l)/2;
+        if(f(mid)){
+            r = mid;
+        }
+        else l = mid;
+    }
+
+    if(f(r)) cout << r << endl;
+    else cout << l << endl;
 }
