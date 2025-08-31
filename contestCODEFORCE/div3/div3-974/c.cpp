@@ -4,61 +4,57 @@
 using namespace std;
 
 vector<ll> a;
-int n, maior = 0, posicao;
+ll n;
 
 
-bool f(ll mid, int maisMetade, ll somaTotal){
-    long double soma = (somaTotal + mid) / (long double) n;
-    long double media = soma / 2.0;
+bool f(ll mid, ll soma){
+    long double media = (long double) (soma + mid) / (long double) n;
+    long double metade = media / 2.0; 
 
-    int tristes = 0;
-    for(ll v:a){
-        if(v < media) tristes++;
+    ll tristes = 0;
+    for(auto v:a){
+        if(v < metade) tristes++;
     }
 
-    return tristes > n/2;
+    return tristes > (long double) n/2;
 }
 
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-
     int t; cin >> t;
     while(t--){
-    cin >> n;
-    a.resize(n);
-    ll somaTotal = 0;
-    for(int i = 0;i < n;i++){
-        cin >> a[i];
-        somaTotal += a[i];
-    }
+        cin >> n;
+        a.resize(n);
+        ll soma = 0;
+        for(int i = 0;i < n;i++){
+            cin >> a[i];
+            soma += a[i];
+        }
 
-    sort(a.begin(), a.end());
-    
-    if(n == 1 || n == 2){
-        cout << -1 << endl;
-        continue;
-    }
 
-     if (f(0, (n/2)+1, somaTotal)) {
-            cout << 0 << endl; 
+        if(n == 1 || n == 2){
+            cout << -1 << endl;
             continue;
         }
 
-        ll l = 0, r = 1e12;
-        ll res = -1;
+        if(f(0, soma)){
+            cout << 0 << endl;
+            continue;
+        }
 
+
+        ll l = 0, r = 1e12;
+        ll res = 0;
         while(r >= l){
             ll mid = (l+r)/2;
-            if(f(mid, (n/2)+1, somaTotal)){
-                r = mid - 1;
+            if(f(mid, soma)){
                 res = mid;
+                r = mid - 1;
             }
-            else{
-                l = mid + 1;
-            }
+            else l = mid + 1;
         }
         cout << res << endl;
-        }
+    }
 }
