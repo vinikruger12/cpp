@@ -12,23 +12,23 @@ int main(){
     ll r = 0, l = 0;
     ll sum = 0, menor = 0, res = 1e9;
 
-    while(r != n){
-        
-        if(sum < s){
+    while(r < n){
+
+        if(sum + vec[r] < s){
             sum += vec[r];
             r++;
         }
         else{
             menor = (r - l);
+            res = min(menor, res);
             sum -= vec[l];
             l++;
-            res = min(menor,res);
         }
-
-        cout << res << ' ' << menor << ' ' <<  sum  << ' ' << l << ' ' << r << endl;
+        
     }
 
-    cout << res << endl;
+    if(res >= 1e9) cout << -1 << endl;
+    else cout << res + 1 << endl;
 
 
 }
