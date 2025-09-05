@@ -18,13 +18,29 @@ int main(){
         
     }
 
-    int l = 0, r = 0, res = 0;
-   
 
-    cout << conta << endl;
-    while(r > n){
-       
-        cout << res << ' ' << l << ' ' << r << endl;
-    }
+    int l = 0, r = 0, res = 1e9, ver = 0;        
+    map<char,int> freq;
+    while(l < n){
+
+        freq[s[r]]++;
+        if(freq[s[r]] == 1) ver++;
+
+        while(ver >= conta){
+            res = min(res, (r - l + 1));
+            if(freq[s[l]] == 1) ver--;
+            freq[s[l]]--;
+            l++;
+        }
+    
+            if(r != (n-1)) r++;
+            else{
+                freq[s[l]]++;
+                if(freq[s[l]] == 1) ver++;
+                l++;
+            }
+        } 
+
+
     cout << res << endl;
 }
