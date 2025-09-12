@@ -63,6 +63,9 @@
         "thread": "cpp",
         "functional": "cpp",
         "charconv": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "barrier": "cpp",
+        "latch": "cpp",
+        "semaphore": "cpp"
     }
 }
