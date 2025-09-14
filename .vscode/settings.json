@@ -66,6 +66,8 @@
         "type_traits": "cpp",
         "barrier": "cpp",
         "latch": "cpp",
-        "semaphore": "cpp"
+        "semaphore": "cpp",
+        "generator": "cpp",
+        "text_encoding": "cpp"
     }
 }
