@@ -1,18 +1,6 @@
 #include <bits/stdc++.h>
-    
+
 using namespace std;
-
-vector<int> a;
-int n;
-int res = 0;
-
-void mex(){
-    int menor;
-    for(int i = 0;i < n;i++){
-        
-    }
-}
-
 
 int main(){
     ios::sync_with_stdio(false);
@@ -21,10 +9,21 @@ int main(){
     int t; cin >> t;
     while(t--){
         int n, k; cin >> n >> k;
-        a.resize(n);
+        vector<int> a(n);
+        map<int, int> mapa;
         for(int i = 0;i < n;i++){
             cin >> a[i];
+            mapa[a[i]]++;
+        }   
+
+        int ans = 0;
+        for(int i = 0;i <= n;i++){
+            if(mapa[i] == 0){
+                if(i < k) ans++;
+            }
         }
         
+        if(mapa[k] - ans > 0) ans += (mapa[k] - ans);
+        cout << ans << endl;
     }
 }
