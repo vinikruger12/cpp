@@ -5,24 +5,26 @@ using namespace std;
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    
+
     int t; cin >> t;
     while(t--){
-        int n, m; cin >> n >> m;
+        int a, b, n; cin >> a >> b >> n;
         int ans = 0;
-        int k = 0;
-        bool ok = 1;
-        
-        for(int i = 0;i < n;i++){
-            string s; cin >> s;
-            for(int j = 0;j < s.size();j++){
-                k++;
-                if(k > m) ok = 0;
+        bool mudou = 0;
+        if(a <= b) cout << 1 << endl;
+        else{
+        for(int i = n;i > 0;i--){
+            if(((float)(a/i)) >= (float)(b)) break;
+            else{
+                if(!mudou){
+                    ans++;
+                    mudou = 1;
+                }
             }
-            if(ok) ans++;
         }
+        ans++;
         cout << ans << endl;
-
     }
+}
 
 }
