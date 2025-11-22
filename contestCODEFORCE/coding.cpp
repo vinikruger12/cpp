@@ -8,23 +8,23 @@ int main(){
 
     int t; cin >> t;
     while(t--){
-        int a, b, n; cin >> a >> b >> n;
+        int n; cin >> n;
+        vector<int> a(n);
+        vector<bool> vis(n, false);
+
+        for(int i = 0;i < n;i++) cin >> a[i];
         int ans = 0;
-        bool mudou = 0;
-        if(a <= b) cout << 1 << endl;
-        else{
-        for(int i = n;i > 0;i--){
-            if(((float)(a/i)) >= (float)(b)) break;
-            else{
-                if(!mudou){
+        for(int i = 0;i < n;i++){
+            for(int j = (i+1);j < n;j++){
+                if(a[i] == a[j] && vis[j] != 1 && vis[i] != 1){
                     ans++;
-                    mudou = 1;
+                    vis[i] = 1;
+                    vis[j] = 1;
                 }
             }
         }
-        ans++;
-        cout << ans << endl;
-    }
-}
 
+        cout << ans << endl;
+
+    }
 }
