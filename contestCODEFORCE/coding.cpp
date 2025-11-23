@@ -10,21 +10,14 @@ int main(){
     while(t--){
         int n; cin >> n;
         vector<int> a(n);
-        vector<bool> vis(n, false);
-
         for(int i = 0;i < n;i++) cin >> a[i];
-        int ans = 0;
-        for(int i = 0;i < n;i++){
-            for(int j = (i+1);j < n;j++){
-                if(a[i] == a[j] && vis[j] != 1 && vis[i] != 1){
-                    ans++;
-                    vis[i] = 1;
-                    vis[j] = 1;
-                }
-            }
+        bool ok = 1;
+        
+        for(int i = 1;i < n;i++){
+            if(abs(a[i] - a[i-1]) != 5 && abs(a[i] - a[i-1]) != 7) ok = 0;
         }
 
-        cout << ans << endl;
-
+        if(ok) cout << "YES" << endl;
+        else cout << "NO" << endl;
     }
 }
