@@ -1,27 +1,20 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-
+ 
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-
     int t; cin >> t;
     while(t--){
-        int n, a; cin >> n >> a;
-        vector<int> v(n);
+        vector<int> a(3);
+        for(int i = 0;i < 3;i++) cin >> a[i];
 
-        for(int i = 0;i < n;i++) cin >> v[i];
-
-        int maior = 0, menor = 0;
-
-        for(int i = 0;i < n;i++){
-            if(v[i] < a) menor++;
-            else if(v[i] > a) maior++;
+        sort(a.begin(), a.end());
+        for(int i = 0;i < 5;i++){
+            a[0]++;
+            sort(a.begin(),a.end());
         }
 
-        if(maior > menor) cout << a + 1 << endl;
-        else if(menor > maior) cout << a - 1 << endl;
-        else cout << a + 1 << endl;
+        cout << a[0] * a[1] * a[2] << endl;
     }
 }
