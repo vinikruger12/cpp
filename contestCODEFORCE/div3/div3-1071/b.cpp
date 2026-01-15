@@ -8,6 +8,17 @@ int main(){
 
     int t; cin >> t;
     while(t--){
-        
+        int n;cin >> n;
+        vector<int> a(n);
+        for(int i = 0;i < n;i++){
+            cin >> a[i];
+        }
+        int soma = 0;
+        for(int i = 0;i < n;i++){
+            if(i % 2 == 0) soma += a[i];
+            else soma -= a[i];
+        }
+
+        cout << soma << endl;
     }
 }
