@@ -3,22 +3,6 @@
 using namespace std;
 
 
-int mex(vector<int> a, int n){
-    map<int, int> freq;
-    for(int i = 0;i < n;i++){
-        freq[a[i]]++;
-    }
-
-    int res = 0;
-    for(int i = 0;i <= n;i++){
-        if(freq[i] == 0){
-            res = i;
-            break;
-        }
-    }
-    return res;
-}
-
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -26,34 +10,35 @@ int main(){
     int t; cin >> t;
     while(t--){
         int n; cin >> n;
-        vector<int> a(n);
-        bool zero = 0;
+        vector<int> a;
+        map<int, int> freq; 
+
         for(int i = 0;i < n;i++){
-            cin >> a[i];
-            if(a[i] == 0) zero = 1;
+            int k; cin >> k;
+            
+            if(freq[k] > 0) continue;
+            
+            freq[k]++;
+            a.emplace_back(k);
         }
 
-        int first = mex(a, n);
+        sort(a.begin(), a.end());
+        bool flag = 0;
+        int c = 0, res = 0;
 
-        int lower = 1e9 + 7;
-        for(int i = 0;i < n;i++){
-            if(zero){
-                lower = min(a[i], lower);
-            }
+        for(int i = 1;i < a.size();i++){
+            if(a[i] - a[i-1] == 1){
+                c++;
+                flag = 1;
+            } 
             else{
-                if(a[i] > 0){
-                    lower = min(a[i], lower);
-                }   
+                flag = 0;
+                c = 0;
             }
+            
+            if(flag) res = max(res, c);
         }
-
-        for(int i = 0;i < n;i++){
-            a[i] -= lower;
-        }
-
-
-        int second = mex(a, n);
-        cout << max(first, second) << endl;
+        cout << res + 1 << endl;
 
     }
 }
