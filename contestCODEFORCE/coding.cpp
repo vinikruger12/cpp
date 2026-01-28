@@ -1,23 +1,26 @@
 #include <bits/stdc++.h>
-
+#define int long long
 
 using namespace std;
 
-int main(){
+signed main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int n, m; cin >> n >> m;
-    vector<int> a(n);
-    for(int i = 0;i < n;i++) cin >> a[i];
+    int x1, y1; cin >> x1 >> y1;
+    int x2, y2; cin >> x2 >> y2;
 
-    int j = -1;
-    for(int i = 0;i < n;i++){
-        if(a[i] >= m){
-            j = i+1;
-            break;
+    if(x1 > x2) cout << 0 << endl;
+    else if(y2 >= y1) cout << -1 << endl;
+    else{
+        int sum1 = x1, sum2 = x2;
+        int d = 0;
+        while(sum1 <= sum2){
+            sum1 += y1;
+            sum2 += y2;
+            d++;
         }
+        cout << d << endl;
     }
-    cout << j << endl;
 
 }
