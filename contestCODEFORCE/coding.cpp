@@ -1,39 +1,47 @@
 #include <bits/stdc++.h>
-#define int long long
+
 using namespace std;
+
 vector<int> a;
-int n;
+int l, n;
 
-void bs(int tempo){
-    int l = -1, r = n;
-    int mid = (l+r)/2;
-
-    while(r - l > 1){
-
-        mid = (l+r)/2;
-        if(a[mid] > tempo){
-            r = mid;
-        }
-        else{
-            l = mid;
-        }
+int f(double mid){
+    double atual = 0;
+    
+    for(int i = 0;i < n;i++){
+        if(a[i] - mid > atual) return 0;
+        atual = max(atual, a[i] + mid);
     }
 
-    cout << l + 1 << endl;
+
+    if(atual >= l) return 1;
+
+    return 0;
 
 }
+
 
 signed main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-   int k; cin >> n >> k;
-   int tempo = 240 - k;
-   a.resize(n);
-   a[0] = 5;
-   for(int i = 1;i < n;i++){
-    a[i] = ((i + 1) * 5) + a[i-1];
-   } 
+    cin >> n >> l;
+    a.resize(n);
+    for(int i = 0;i < n;i++) cin >> a[i];
 
-   bs(tempo);
+    sort(a.begin(), a.end());
+
+    double lo = 0, ro = (double)l;
+    
+    for(int i = 0;i < 100;i++){
+        double mid = (ro+lo)/2;
+        if(f(mid)){
+            ro = mid;
+        }
+        else{
+            lo = mid;
+        }
+    }
+    
+    cout << setprecision(10) << fixed << ro << endl;
 }
