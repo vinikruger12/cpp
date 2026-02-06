@@ -1,30 +1,25 @@
 #include <bits/stdc++.h>
-
+#define int long long
 using namespace std;
 
-int main(){
+int f(int n){
+    int k = 0;
+    for(int i = 1;i <= n;i++){
+        if(i % 2 != 0){
+            k -= i;
+        }
+        else k += i;
+    }
+
+    return k;
+}
+
+
+signed main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-   int t; cin >> t;
-   while(t--){
     int n; cin >> n;
-    vector<int> a(n);
-
-    for(int i = 0;i < n;i++) cin >> a[i];
-
-    bool ok = 0;
-
-    for(int i = 1;i < n;i++){
-        if(a[0] == '0' && a[i-1] == 0) ok = 1;
-        if(a[i] == '1' && a[i-1] == '0' && a[i+1] == '0' && n == 3) ok = 1;
-
-    }
-
-
-    if(ok) cout << "BOB" << endl;
-    else cout << "ALICE" << endl;
-
-   }
-
+    cout << f(n) << endl;
 }
+
