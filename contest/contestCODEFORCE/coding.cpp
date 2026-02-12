@@ -9,8 +9,15 @@ signed main(){
 
     int t; cin >> t;
     while(t--){
-        int n, w; cin >> n >> w;
-        cout << ((w-1) * (int)(n/w)) + (n % w) << endl;
+        int p, q; cin >> p >> q;
+        int diff = q - p;
+        if(diff <= 0) cout << "Alice" << endl;
+        else{
+            int a = diff * 2;
+            if(a <= p) cout << "Bob" << endl;
+            else cout << "Alice" << endl;
+        }
+           
     }
     
 }
