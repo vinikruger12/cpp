@@ -9,16 +9,11 @@ signed main(){
 
     int t; cin >> t;
     while(t--){
-        int p, q; cin >> p >> q;
-        int diff = q - p;
-        if(diff <= 0) cout << "Alice" << endl;
-        else{
-            int a = diff * 2;
-            if(a <= p) cout << "Bob" << endl;
-            else cout << "Alice" << endl;
-        }
-           
-    }
+        int a, b, x, y, n; cin >> a >> b >> x >> y >> n;
+        
+        int case1
+
+    }    
     
 }
 
