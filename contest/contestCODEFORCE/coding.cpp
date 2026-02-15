@@ -7,13 +7,10 @@ signed main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t; cin >> t;
-    while(t--){
-        int a, b, x, y, n; cin >> a >> b >> x >> y >> n;
-        
-        int case1
-
-    }    
-    
+    int n; cin >> n;
+    if(n % 2 == 0){
+        cout << n/2 << endl;
+    }
+    else cout << -n/2 - 1 << endl;    
 }
 
