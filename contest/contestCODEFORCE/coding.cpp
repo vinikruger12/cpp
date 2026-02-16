@@ -3,14 +3,23 @@
 using namespace std;
 
 
+
 signed main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int n; cin >> n;
-    if(n % 2 == 0){
-        cout << n/2 << endl;
-    }
-    else cout << -n/2 - 1 << endl;    
+    int t; cin >> t;
+    while(t--){
+        int n; cin >> n;
+        map<int, int> freq; 
+        for(int i = 0;i < n;i++){
+            int u; cin >> u;
+            freq[u]++;
+        }
+
+        if(freq[67] >= 1) cout << "YES" << endl;
+        else cout << "NO" << endl;
+
+    } 
 }
 
