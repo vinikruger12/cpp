@@ -1,25 +1,27 @@
 #include <bits/stdc++.h>
-#define int long long
+
 using namespace std;
 
-
-
-signed main(){
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
+int main(){
+    int n; cin >> n;
+    vector<int> a(n);
+    for(int i = 0;i < n;i++) cin >> a[i];
     int t; cin >> t;
-    while(t--){
-        int n; cin >> n;
-        map<int, int> freq; 
-        for(int i = 0;i < n;i++){
-            int u; cin >> u;
-            freq[u]++;
+    
+    map<int, pair<int, int>> hash;
+
+    for(int i = 0;i < n;i++){
+       
+        if(hash[a[i]].first >= 1){
+            cout << hash[a[i]].second << ' ' << i << endl;
+            break;
         }
 
-        if(freq[67] >= 1) cout << "YES" << endl;
-        else cout << "NO" << endl;
+        int k = t - a[i];
+        hash[k].first++;
+        hash[k].second = i;
+    }
+    
 
-    } 
+
 }
-
