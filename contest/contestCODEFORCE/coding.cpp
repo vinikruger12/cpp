@@ -4,33 +4,18 @@ using namespace std;
 
 
 signed main(){
-    string a, b; cin >> a >> b;
-    
-    for(int i = 0;i < a.size();i++){
-        a[i] = tolower(a[i]);
-    }
-
-    for(int i = 0;i < b.size();i++){
-        b[i] = tolower(b[i]);
-    }
-
-    int first = 0, second = 0;
-    for(int i = 0;i < a.size();i++){
-        first += a[i];
-        second += b[i];
-        
-        if(first > second){
-            cout << 1 << endl;
-            break;
+    int t; cin >> t;
+    while(t--){
+        int n; cin >> n;
+        vector<int> a(n);
+        for(int i = 0;i < n;i++) cin >> a[i];
+        map<int, int> freq;
+        sort(a.begin(), a.end());
+        for(int i = 0;i < n;i++){
+            freq[a[i]]++;
         }
-        else if(second > first){ 
-            cout << -1 << endl;
-            break;
-        }
-       
-    }
+        cout << freq[a[n-1]] << endl;
 
-     if(first == second) cout << 0 << endl;
-        
+    }
 
 }   
