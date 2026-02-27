@@ -1,28 +1,36 @@
 #include <bits/stdc++.h>
-
+#define int long long
 using namespace std;
 
-int main(){
-    int t; cin >> t;
-    while(t--){
-        int n; cin >> n;
-        string s; cin >> s;
-        vector<int> a;
-        int k = 1;
-        bool yeah = 0;
-        for(int i = 1;i < s.size();i++){
-            if(s[i - 1] != s[i]){
-                if(k > 1) yeah = 1;
-                a.push_back(k);
-                k = 0;
-            }
-            k++;
-        }
-        if(k > 1) yeah = 1;
-        a.push_back(k);
-        int add = 0;
-        if(yeah) add = s[0] != s[n-1] ? 1 : 0;
-        int ans = a.size() + add;
-        cout << ans << endl;
+
+signed main(){
+    string a, b; cin >> a >> b;
+    
+    for(int i = 0;i < a.size();i++){
+        a[i] = tolower(a[i]);
     }
-}
+
+    for(int i = 0;i < b.size();i++){
+        b[i] = tolower(b[i]);
+    }
+
+    int first = 0, second = 0;
+    for(int i = 0;i < a.size();i++){
+        first += a[i];
+        second += b[i];
+        
+        if(first > second){
+            cout << 1 << endl;
+            break;
+        }
+        else if(second > first){ 
+            cout << -1 << endl;
+            break;
+        }
+       
+    }
+
+     if(first == second) cout << 0 << endl;
+        
+
+}   
