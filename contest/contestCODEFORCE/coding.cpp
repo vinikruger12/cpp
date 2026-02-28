@@ -1,21 +1,14 @@
 #include <bits/stdc++.h>
-#define int long long
+
 using namespace std;
 
 
-signed main(){
-    int t; cin >> t;
-    while(t--){
-        int n; cin >> n;
-        vector<int> a(n);
-        for(int i = 0;i < n;i++) cin >> a[i];
-        map<int, int> freq;
-        sort(a.begin(), a.end());
-        for(int i = 0;i < n;i++){
-            freq[a[i]]++;
-        }
-        cout << freq[a[n-1]] << endl;
-
+int main(){
+    int x; cin >> x;
+    if(x <= 5) cout << 1 << endl;
+    else{
+        if(x % 5 == 0) cout << x/5 << endl;
+        else cout << (int)(x/5) + 1 << endl;
     }
 
 }   
