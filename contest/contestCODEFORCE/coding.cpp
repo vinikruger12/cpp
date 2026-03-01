@@ -1,14 +1,16 @@
 #include <bits/stdc++.h>
-
+#define int long long
 using namespace std;
 
 
-int main(){
-    int x; cin >> x;
-    if(x <= 5) cout << 1 << endl;
+signed main(){
+    int n, k; cin >> n >> k;
+    int q = n % 2 == 0 ? (int)n/2 : (int)n/2 + 1;
+    if(k <= q){
+       cout << 2*k - 1 << endl; 
+    }
     else{
-        if(x % 5 == 0) cout << x/5 << endl;
-        else cout << (int)(x/5) + 1 << endl;
+       cout << 2*(k - q) << endl;
     }
 
 }   
