@@ -4,19 +4,19 @@ using namespace std;
 
 
 signed main(){
-   int mat[5][5];
-   int m = 0, n = 0;
-   for(int i = 0;i < 5;i++){
-      for(int j = 0;j < 5;j++){
-         int x; cin >> x;
-         if(x == 1){
-            m = i;
-            n = j;
-         }
-      }
+   int n, m, a; cin >> n >> m >> a;
+   int b = 0;
+   if(n % a == 0) b = n/a;
+   else b = (n/a) + 1; 
+
+   int c = 0;
+   int k = m - a;
+   int j = 0;
+   if(k > 0){
+      if(k % a == 0) j = k/a;
+      else j = k/a + 1;
    }
 
-   cout << (abs(m - 2) + abs(n - 2)) << endl;
-
+   cout << b + (b*j) << endl;
 
 }   
