@@ -4,14 +4,31 @@ using namespace std;
 
 
 signed main(){
+   int maior = 0, menor = 0;
    string s; cin >> s;
-   int ans = 0;
    for(int i = 0;i < s.size();i++){
-      if(ans == 0 && s[i] == 'h') ans++;
-      if(ans == 1 && s[i] == 'e') ans++;
-      if((ans == 2 || ans == 3) && s[i] == 'l') ans++;
-      if(ans == 4 && s[i] == 'o') ans++;
+      if(s[i] >= 'a' && s[i] <= 'z') menor++;
+      else maior++;
    }
-   if(ans == 5) cout << "YES" << endl;
-   else cout << "NO" << endl;
+
+   if(maior > menor){
+      for(int i = 0;i < s.size();i++){
+         if(s[i] >= 'A' && s[i] <= 'Z') cout << s[i];
+         else{
+            char c = toupper(s[i]);
+            cout << c;
+         }
+      }
+      cout << endl;
+   }
+   else{
+      for(int i = 0;i < s.size();i++){
+         if(s[i] >= 'a' && s[i] <= 'z') cout << s[i];
+         else{
+            char c = tolower(s[i]);
+            cout << c;
+         }
+      }
+      cout << endl;      
+   }
 }   
